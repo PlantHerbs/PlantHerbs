@@ -1,4 +1,4 @@
-import { firestore } from "../config";
+aimport { firestore } from "../config";
 
 
 export async function validationRegister(data: any): Promise<boolean | string> {
