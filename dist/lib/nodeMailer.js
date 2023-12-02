@@ -33,7 +33,7 @@ const sendEmail = (data) => __awaiter(void 0, void 0, void 0, function* () {
             from: "'Test Send Email' <no-reply@gmail.com>",
             to: data.EMAIL,
             subject: 'Test Send Email',
-            text: 'Halo! Ini adalah contoh email yang dikirim menggunakan Node Mailer dan TypeScript.'
+            html: data.html
         };
         // Mengirim email
         const info = yield transporter.sendMail(mailOptions);

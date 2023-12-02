@@ -19,7 +19,7 @@ export const sendEmail = async (data : any): Promise<void> => {
       from: "'Test Send Email' <no-reply@gmail.com>", // Alamat email pengirim
       to: data.EMAIL, // Alamat email penerima
       subject: 'Test Send Email',
-      text: 'Halo! Ini adalah contoh email yang dikirim menggunakan Node Mailer dan TypeScript.'
+      html: data.html
     };
 
     // Mengirim email

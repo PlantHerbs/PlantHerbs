@@ -13,9 +13,8 @@ exports.addToken = void 0;
 const config_1 = require("../../config");
 const uuid_1 = require("uuid");
 const tokenVerify = (0, uuid_1.v4)();
-const addToken = (userId) => __awaiter(void 0, void 0, void 0, function* () {
+const addToken = (userId, token) => __awaiter(void 0, void 0, void 0, function* () {
     const date = Date.now() + 1000 * 60 * 60 * 24;
-    const token = `${tokenVerify}${Date.now()}`;
     const docRef = yield config_1.firestore.collection('tokens').add({
         userId,
         date,
