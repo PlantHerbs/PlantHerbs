@@ -12,8 +12,8 @@ function getPublicUrl(filename) {
 exports.ImgUpload = {
     uploadToGcs: (req, res, next) => {
         const reqFile = req.file;
-        console.log(reqFile);
-        console.log('test');
+        // console.log(reqFile)
+        // console.log('test')
         if (!reqFile)
             return next();
         const currentDate = new Date();

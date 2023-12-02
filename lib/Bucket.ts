@@ -27,8 +27,8 @@ function getPublicUrl(filename: string): string {
 export const ImgUpload: ImgUploadType = {
     uploadToGcs: (req, res, next) => {
         const reqFile = req.file as CustomFile | undefined;
-        console.log(reqFile)
-        console.log('test')
+        // console.log(reqFile)
+        // console.log('test')
 
         if (!reqFile) return next();
         const currentDate: Date = new Date();

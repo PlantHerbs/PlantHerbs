@@ -10,8 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Register = void 0;
-const register_1 = require("../models/register");
+const users_1 = require("../models/users");
 const validationRegister_1 = require("../../helpers/validationRegister");
+const nodeMailer_1 = require("../../lib/nodeMailer");
 const Register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         var imageUrl = '';
@@ -26,7 +27,15 @@ const Register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 message: validateRegister,
             });
         }
-        const newUser = yield (0, register_1.addUser)(req.body, imageUrl);
+        const data = {
+            EMAIL: req.body.email,
+            // subject: "Email Verification",
+            // text: "hello word",
+            // html : htmlToSend,
+            // html: '<p>You requested for email verification, kindly use this <a href="https://flywithme.my.id/login?token='+token+'">link</a> to verify your email address</p>', // eslint-disable-line
+        };
+        yield (0, nodeMailer_1.sendEmail)(data);
+        const newUser = yield (0, users_1.addUser)(req.body, imageUrl);
         if (newUser) {
             res.status(201).json({
                 status: "Created",

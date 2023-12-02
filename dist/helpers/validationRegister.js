@@ -21,6 +21,7 @@ function validationRegister(data) {
         const snapshot = yield config_1.firestore.collection('users')
             .where('email', '==', userEmail)
             .get();
+        // console.log(snapshot.docs[0].data())
         if (!snapshot.empty) {
             return 'Email sudah terdaftar';
         }

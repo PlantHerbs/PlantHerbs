@@ -1,4 +1,5 @@
 import { firestore } from "../../config";
+import { addToken } from "./token";
 
 
 export const addUser = async(data : any, image : string) : Promise<any> => {
@@ -7,10 +8,12 @@ export const addUser = async(data : any, image : string) : Promise<any> => {
               full_name: fullName,
               email,
               password,
-              image
+              image,
+              verified: false
               // ...Tambahkan field lain sesuai kebutuhan
             });
-    if(docRef){
+    const addTokens = await addToken(docRef.id)
+    if(docRef && addTokens){
         return true
     }
 }
