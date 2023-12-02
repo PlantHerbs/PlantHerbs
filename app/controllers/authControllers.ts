@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import { addUser } from "../models/users";
 import { validationRegister } from "../../helpers/validationRegister";
-import { sendEmail } from "../../lib/nodeMailer";
+// import { sendEmail } from "../../lib/nodeMailer";
 
 interface MulterFile {
     cloudStoragePublicUrl?: string;
@@ -24,14 +24,7 @@ export const Register = async(req : Request  & { file?: MulterFile },res : Respo
         }
 
         
-        const data = {
-            EMAIL: req.body.email,
-            // subject: "Email Verification",
-            // text: "hello word",
-            // html : htmlToSend,
-            // html: '<p>You requested for email verification, kindly use this <a href="https://flywithme.my.id/login?token='+token+'">link</a> to verify your email address</p>', // eslint-disable-line
-          }
-          await sendEmail(data)
+        
       
         const newUser = await addUser(req.body, imageUrl)
         if(newUser){
