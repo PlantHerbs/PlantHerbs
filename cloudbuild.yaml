@@ -1,23 +1,26 @@
-step: 
-  #build the container image
-- name: 'gcr.io/plantherbs/docker'
+steps:
+  # Build the container image
+- name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/backend', '.']
- #push the container image to Cotainer Registry
-- name: 'gcr.io/plantherbs/docker'
+
+  # Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/backend']
+
   # Deploy container image to Cloud Run
-- name: 'gcr.io/plantherbs/gcloud'
-  args: ['beta',
-  'run',
-  'deploy',
-  'backend',
-  '--image',
-  'gcr.io/$PROJECT_ID/backend',
-  '--region',
-  'asia-southeast2',
-  '--platform',
-  'managed',
-  '--allow-unautenticated']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+    - 'beta'
+    - 'run'
+    - 'deploy'
+    - 'backend'
+    - '--image'
+    - 'gcr.io/$PROJECT_ID/backend'
+    - '--region'
+    - 'asia-southeast2'
+    - '--platform'
+    - 'managed'
+    - '--allow-unauthenticated'
 
 images:
-  gcr.io/$PROJECT_ID/backend
+- 'gcr.io/$PROJECT_ID/backend'
