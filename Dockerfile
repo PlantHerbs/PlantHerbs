@@ -2,7 +2,7 @@ FROM alpine:3
 
 WORKDIR /app
 
-COPY ..
+COPY . .
 
 RUN npm install
 
