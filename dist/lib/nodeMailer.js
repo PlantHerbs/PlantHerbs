@@ -21,7 +21,7 @@ console.log(process.env.EMAIL, process.env.PASS_APPS);
 const transporter = nodemailer_1.default.createTransport({
     service: 'gmail',
     auth: {
-        user: process.env.EMAIL, // Ganti dengan email pengirim
+        user: process.env.EMAIL,
         pass: process.env.PASS_APPS, // Ganti dengan password email pengirim
     }
 });
@@ -30,8 +30,8 @@ const sendEmail = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // Pengaturan email yang akan dikirim
         const mailOptions = {
-            from: "'Test Send Email' <no-reply@gmail.com>", // Alamat email pengirim
-            to: data.EMAIL, // Alamat email penerima
+            from: "'Test Send Email' <no-reply@gmail.com>",
+            to: data.EMAIL,
             subject: 'Test Send Email',
             html: data.html
         };

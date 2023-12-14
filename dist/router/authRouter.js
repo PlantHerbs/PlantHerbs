@@ -12,3 +12,4 @@ const Bucket_1 = require("../lib/Bucket");
 const authRouter = express_1.default.Router();
 exports.authRouter = authRouter;
 authRouter.post("/register", multer_1.multer.single('attachment'), Bucket_1.ImgUpload.uploadToGcs, authControllers_1.Register);
+authRouter.post("/login", authControllers_1.Login);
