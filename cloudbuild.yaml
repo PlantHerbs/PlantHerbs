@@ -6,7 +6,7 @@ step:
 - name: 'gcr.io/plantherbs/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/backend']
   # Deploy container image to Cloud Run
-  name: 'gcr.io/plantherbs/gcloud'
+- name: 'gcr.io/plantherbs/gcloud'
   args: ['beta',
   'run',
   'deploy',
