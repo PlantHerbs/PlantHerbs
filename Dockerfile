@@ -1,4 +1,4 @@
-FROM alpine:3
+FROM node:alpine
 
 WORKDIR /app
 
@@ -6,10 +6,10 @@ COPY . .
 
 RUN npm install
 
-ENV PORT = 8000
-ENV GOOGLE_CLOUD_PROJECT = plantherbs
-ENV EMAIL = plantherbs.official@gmail.com
-ENV PASS_APPS = cndz otbf srul avxb
+ENV PORT=8000
+ENV GOOGLE_CLOUD_PROJECT=plantherbs
+ENV EMAIL=plantherbs.official@gmail.com
+ENV PASS_APPS="cndz otbf srul avxb"
 
 EXPOSE 8000
 
