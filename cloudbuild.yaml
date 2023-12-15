@@ -7,9 +7,9 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/backend']
 
-  # Set IAM policy binding for Cloud Build to act as the service account
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['projects', 'add-iam-policy-binding', '$PROJECT_ID', '--member=serviceAccount:cloudrun-platherbs@plantherbs.iam.gserviceaccount.com', '--role=roles/run.invoker']
+#   # Set IAM policy binding for Cloud Build to act as the service account
+# - name: 'gcr.io/cloud-builders/gcloud'
+#   args: ['projects', 'add-iam-policy-binding', '$PROJECT_ID', '--member=serviceAccount:cloudrun-platherbs@plantherbs.iam.gserviceaccount.com', '--role=roles/run.invoker']
 
   # Deploy container image to Cloud Run
 - name: 'gcr.io/cloud-builders/gcloud'
