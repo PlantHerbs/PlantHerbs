@@ -26,7 +26,7 @@ export const addUser = async(data : any) : Promise<any> => {
               username : randomUsername,
               password: encrypted,
               image : 'https://storage.googleapis.com/examplelalala/istockphoto-518552551-612x612.jpg',
-              verified: false   
+              verified: true   
               // ...Tambahkan field lain sesuai kebutuhan
             });
             const token: string = speakeasy.totp({

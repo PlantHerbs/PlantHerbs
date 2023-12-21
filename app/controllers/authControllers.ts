@@ -103,38 +103,38 @@ export const Login = async(req : Request  ,res : Response) : Promise<any> => {
     
 // }
 
-export const verify = async(req : Request  ,res : Response) : Promise<any> => {
-    try{
+// export const verify = async(req : Request  ,res : Response) : Promise<any> => {
+//     try{
         
-       const { otp } =  req.body
-    //    console.log()
-        const validateToken = await getToken(otp.toString())
-        if(!validateToken){
-            res.status(401).json({
-                status: 'Unauthorized',
-                error: 'your otp is expired'
-            })
-        }
+//        const { otp } =  req.body
+//     //    console.log()
+//         const validateToken = await getToken(otp.toString())
+//         if(!validateToken){
+//             res.status(401).json({
+//                 status: 'Unauthorized',
+//                 error: 'your otp is expired'
+//             })
+//         }
 
-        const changeStatus = await updateStatus(validateToken.data)
-        if(!changeStatus){
-            res.status(401).json({
-                status: 'Unauthorized',
-                error: 'user undefined'
-            })
-        }
+//         const changeStatus = await updateStatus(validateToken.data)
+//         if(!changeStatus){
+//             res.status(401).json({
+//                 status: 'Unauthorized',
+//                 error: 'user undefined'
+//             })
+//         }
 
-        res.status(200).json({
-            status: "Ok",
-            message: "Update Status Success",
-          });
+//         res.status(200).json({
+//             status: "Ok",
+//             message: "Update Status Success",
+//           });
        
-    }catch(err : any){
-        res.status(err.statusCode || 500).json({
-            status: "failed",
-            message: err.message,
-          });
-    }
+//     }catch(err : any){
+//         res.status(err.statusCode || 500).json({
+//             status: "failed",
+//             message: err.message,
+//           });
+//     }
     
 
-}
+// }
