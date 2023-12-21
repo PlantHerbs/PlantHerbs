@@ -10,17 +10,22 @@ const key = randomBytes(32);
 const iv = randomBytes(16); 
 
 
-export const addUser = async(data : any, image : string) : Promise<any> => {
+export const addUser = async(data : any) : Promise<any> => {
     const { fullName , email, password  } = data as { fullName : string;email: string; password: string };
     const cipher = createCipheriv(algorithm, key, iv);
     let encrypted = cipher.update(password, 'utf8', 'hex');
     encrypted += cipher.final('hex');
-
+    const formattedName = fullName.toLowerCase().split(' ');
+    let acronym = '';
+    formattedName.forEach(word => { acronym += word.charAt(0)});
+    const randomNum = Math.floor(Math.random() * 9000) + 1000;
+    const randomUsername = acronym + randomNum;
             const docRef = await firestore.collection('users').add({
               full_name: fullName,
               email,
+              username : randomUsername,
               password: encrypted,
-              image,
+              image : 'https://storage.googleapis.com/examplelalala/istockphoto-518552551-612x612.jpg',
               verified: false   
               // ...Tambahkan field lain sesuai kebutuhan
             });
@@ -56,3 +61,15 @@ export const loginUser = async(data: any) : Promise<any> => {
 
 }
 
+
+export const updateStatus = async (data:any) : Promise<boolean> => {
+  const userRef = firestore.collection('users').doc(data.userId)
+  if(!userRef){
+    return false
+  }
+  await userRef.update({
+    verified: true
+  })
+
+  return true
+}
