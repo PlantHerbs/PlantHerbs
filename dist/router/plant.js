@@ -9,3 +9,4 @@ const plantRouter = express_1.default.Router();
 exports.plantRouter = plantRouter;
 const plantControllers_1 = require("../app/controllers/plantControllers");
 plantRouter.get("/:name", plantControllers_1.GetPlants);
+plantRouter.get("/", plantControllers_1.GetAllPlant);

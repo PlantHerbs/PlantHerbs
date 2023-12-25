@@ -9,10 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.verify = exports.Login = exports.Register = void 0;
+exports.Login = exports.Register = void 0;
 const users_1 = require("../models/users");
 const validationUser_1 = require("../../helpers/validationUser");
-const token_1 = require("../models/token");
 // import { sendEmail } from "../../lib/nodeMailer";
 // interface MulterFile {
 //     cloudStoragePublicUrl?: string;
@@ -97,34 +96,32 @@ exports.Login = Login;
 //           });
 //     }
 // }
-const verify = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const { otp } = req.body;
-        //    console.log()
-        const validateToken = yield (0, token_1.getToken)(otp.toString());
-        if (!validateToken) {
-            res.status(401).json({
-                status: 'Unauthorized',
-                error: 'your otp is expired'
-            });
-        }
-        const changeStatus = yield (0, users_1.updateStatus)(validateToken.data);
-        if (!changeStatus) {
-            res.status(401).json({
-                status: 'Unauthorized',
-                error: 'user undefined'
-            });
-        }
-        res.status(200).json({
-            status: "Ok",
-            message: "Update Status Success",
-        });
-    }
-    catch (err) {
-        res.status(err.statusCode || 500).json({
-            status: "failed",
-            message: err.message,
-        });
-    }
-});
-exports.verify = verify;
+// export const verify = async(req : Request  ,res : Response) : Promise<any> => {
+//     try{
+//        const { otp } =  req.body
+//     //    console.log()
+//         const validateToken = await getToken(otp.toString())
+//         if(!validateToken){
+//             res.status(401).json({
+//                 status: 'Unauthorized',
+//                 error: 'your otp is expired'
+//             })
+//         }
+//         const changeStatus = await updateStatus(validateToken.data)
+//         if(!changeStatus){
+//             res.status(401).json({
+//                 status: 'Unauthorized',
+//                 error: 'user undefined'
+//             })
+//         }
+//         res.status(200).json({
+//             status: "Ok",
+//             message: "Update Status Success",
+//           });
+//     }catch(err : any){
+//         res.status(err.statusCode || 500).json({
+//             status: "failed",
+//             message: err.message,
+//           });
+//     }
+// }

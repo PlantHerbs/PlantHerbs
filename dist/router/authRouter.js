@@ -13,4 +13,3 @@ const authRouter = express_1.default.Router();
 exports.authRouter = authRouter;
 authRouter.post("/register", authControllers_1.Register);
 authRouter.post("/login", authControllers_1.Login);
-authRouter.post("/verify", authControllers_1.verify);

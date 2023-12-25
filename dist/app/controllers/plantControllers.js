@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetPlants = void 0;
+exports.GetAllPlant = exports.GetPlants = void 0;
 const plant_1 = require("../models/plant");
 const GetPlants = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -35,3 +35,26 @@ const GetPlants = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.GetPlants = GetPlants;
+const GetAllPlant = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const plantData = yield (0, plant_1.GetAllPlants)();
+        if (!plantData.status) {
+            return res.status(404).json({
+                status: 'Not Found',
+                error: 'Data Tanaman Not Found'
+            });
+        }
+        return res.status(200).json({
+            status: 'Ok',
+            message: 'Data Plant Found',
+            data: plantData.data
+        });
+    }
+    catch (err) {
+        res.status(err.statusCode || 500).json({
+            status: "failed",
+            message: err.message,
+        });
+    }
+});
+exports.GetAllPlant = GetAllPlant;

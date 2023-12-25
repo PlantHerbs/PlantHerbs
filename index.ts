@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import { router } from './router';
+import cors from 'cors'
 
 
 dotenv.config();
@@ -10,6 +11,9 @@ const port = process.env.PORT;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(router);
+app.use(cors({
+  origin : "*"
+}))
 // app.get('/', (req: Request, res: Response) => {
 //   res.send('Express + TypeScript Server');
 // });

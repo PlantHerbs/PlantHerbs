@@ -38,7 +38,7 @@ const addUser = (data) => __awaiter(void 0, void 0, void 0, function* () {
         username: randomUsername,
         password: encrypted,
         image: 'https://storage.googleapis.com/examplelalala/istockphoto-518552551-612x612.jpg',
-        verified: false
+        verified: true
         // ...Tambahkan field lain sesuai kebutuhan
     });
     const token = speakeasy_1.default.totp({
