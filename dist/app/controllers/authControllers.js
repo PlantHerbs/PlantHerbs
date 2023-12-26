@@ -13,10 +13,6 @@ exports.Login = exports.Register = void 0;
 const users_1 = require("../models/users");
 const validationUser_1 = require("../../helpers/validationUser");
 // import { sendEmail } from "../../lib/nodeMailer";
-// interface MulterFile {
-//     cloudStoragePublicUrl?: string;
-//     // Tambahkan properti lain yang dibutuhkan dari objek file jika ada
-// }
 const Register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // console.log(imageUrl)
@@ -83,19 +79,6 @@ const Login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.Login = Login;
-// export const updateUser = async(req : Request & { file?: MulterFile } ,res : Response) : Promise<any> => {
-//     try{
-//         let imageUrl = ''
-//         if (req.file && req.file.cloudStoragePublicUrl) {
-//             imageUrl = req.file.cloudStoragePublicUrl
-//         }
-//     }catch(err : any){
-//         res.status(err.statusCode || 500).json({
-//             status: "failed",
-//             message: err.message,
-//           });
-//     }
-// }
 // export const verify = async(req : Request  ,res : Response) : Promise<any> => {
 //     try{
 //        const { otp } =  req.body

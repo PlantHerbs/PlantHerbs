@@ -4,7 +4,7 @@ import { Request, Response, NextFunction } from "express";
 import { formatDate } from "../helpers/formatDate";
 import { File } from '@google-cloud/storage';
 
-const bucketName = 'examplelalala';
+const bucketName = 'plantherbs-bucket';
 const bucket = storage.bucket(bucketName);
 
 interface ImgUploadType {
@@ -31,10 +31,10 @@ export const ImgUpload: ImgUploadType = {
         // console.log('test')
 
         if (!reqFile) return next();
-        const currentDate: Date = new Date();
+        // const currentDate: Date = new Date();
 
-        const gcsname: string = formatDate(currentDate);
-        const file = bucket.file(gcsname);
+        // const gcsname: string = formatDate(currentDate);
+        const file = bucket.file(`input/${req.file?.originalname}`);
 
         const stream = file.createWriteStream({
             metadata: {
@@ -42,14 +42,16 @@ export const ImgUpload: ImgUploadType = {
             }
         });
 
+
         stream.on('error', (err) => {
             reqFile.cloudStorageError = err;
             next(err);
         });
 
         stream.on('finish', () => {
-            reqFile.cloudStorageObject = gcsname;
-            reqFile.cloudStoragePublicUrl = getPublicUrl(gcsname);
+            // file.name.replace
+            reqFile.cloudStorageObject = file.name.replace('input/','');
+            // reqFile.cloudStoragePublicUrl = getPublicUrl(gcsname);
             next();
         });
 

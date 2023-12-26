@@ -1,14 +1,12 @@
 import { Request, Response } from "express"
 import { addUser, loginUser , updateStatus} from "../models/users";
 import { validationRegister, GetData } from "../../helpers/validationUser";
+
 import { getToken } from "../models/token";
 import { log } from "console";
 // import { sendEmail } from "../../lib/nodeMailer";
 
-// interface MulterFile {
-//     cloudStoragePublicUrl?: string;
-//     // Tambahkan properti lain yang dibutuhkan dari objek file jika ada
-// }
+
 
 export const Register = async(req : Request  ,res : Response) : Promise<any> => {
     try{
@@ -87,21 +85,7 @@ export const Login = async(req : Request  ,res : Response) : Promise<any> => {
     
 }
 
-// export const updateUser = async(req : Request & { file?: MulterFile } ,res : Response) : Promise<any> => {
-//     try{
-//         let imageUrl = ''
-//         if (req.file && req.file.cloudStoragePublicUrl) {
-//             imageUrl = req.file.cloudStoragePublicUrl
-//         }
-    
-//     }catch(err : any){
-//         res.status(err.statusCode || 500).json({
-//             status: "failed",
-//             message: err.message,
-//           });
-//     }
-    
-// }
+
 
 // export const verify = async(req : Request  ,res : Response) : Promise<any> => {
 //     try{
