@@ -8,8 +8,7 @@ RUN npm install
 
 ENV PORT=8000
 ENV GOOGLE_CLOUD_PROJECT=plantherbs
-ENV EMAIL=plantherbs.official@gmail.com
-ENV PASS_APPS="cndz otbf srul avxb"
+ENV LINK_PREDICT_API="https://predict-msa6gk7a6q-uc.a.run.app/api/predict"
 
 EXPOSE 8000
 
