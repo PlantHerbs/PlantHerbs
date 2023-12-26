@@ -22,9 +22,9 @@ export const GetPlants = async(req : Request  ,res : Response) : Promise<any> =>
         })
 
     }catch(err : any){
-        res.status(err.statusCode || 500).json({
+        res.status(err.statusCode || 404).json({
             status: "failed",
-            message: err.message,
+            message: 'Undetectable',
           });
     }
 }
